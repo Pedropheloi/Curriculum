@@ -1,54 +1,82 @@
-*
-{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-align: center;
   font-family: "Edu NSW ACT Cursive", cursive;
-  background-image: url('img\ br\ it.png');
-  background-position: center;
 }
 
-
 body {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
-
   height: 100vh;
   margin: 0;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), 0 1.5px 4px rgba(0, 0, 0, 0.08);
-  }
+  background-image: url('img br it.png'); 
+  background-position: center;
+  background-size: cover; 
+}
 
-  .botoes {
-    border-top: 5px solid #CCC;
-    border-bottom: 5px solid #CCC;
-    border-radius: 30px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 33px 33px 15px;
-    background: transparent;
+.botoes {
+  border-top: 5px solid #CCC;
+  border-bottom: 5px solid #CCC;
+  border-radius: 30px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15); 
+  padding: 33px 33px 15px;
+  background: rgba(0, 0, 0, 0.2); 
+  backdrop-filter: blur(5px); 
+}
 
-  }
+.botoes button {
+  position: relative; 
+  background: #0f172a; 
+  width: 80%;
+  height: 50px;
+  margin: 10px 0;
+  border-radius: 30px;
+  border: none;
+  color: #fffdfd;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1;
+  overflow: hidden; /* Esconde o excesso do gradiente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .botoes button {
-    background-color: transparent;
+.botoes button::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff007f, #7928ca, #00dfd8, #ff007f);
+  background-size: 400%;
+  border-radius: 30px;
+  z-index: -1;
+  animation: brilha 8s linear infinite;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
 
-    width: 80%;
-    height: 50px;
-    margin: 10px 0;
-    border-radius: 30px;
-    border: none;
-    color: #fffdfd;
-    font-size: 18px;
-    cursor: pointer;
+@keyframes brilha {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-  }
-  .botoes button:hover {
-    background-color: #241818;
-    color: #277d27;
-  }
+.botoes button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(121, 40, 202, 0.4);
+  color: #00dfd8; 
+}
 
+.botoes button:hover::before {
+  opacity: 1; 
+}
 
+.botoes button:active {
+  transform: translateY(1px);
+}
