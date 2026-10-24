@@ -7,26 +7,56 @@
 }
 
 body {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100vh;
-  margin: 0;
-  background-image: url('img br it.png'); 
-  background-position: center;
-  background-size: cover; 
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.4) 0%, rgba(11, 15, 25, 0.9) 100%),
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+.particulas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.particula {
+  position: absolute;
+  width: var(--tamanho);
+  height: var(--tamanho);
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px 3px currentColor;
+  opacity: 0;
+  transition-property: left, top, opacity;
+  transition-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particula {
+    transition: none;
+  }
 }
 
 .botoes {
-  border-top: 5px solid #CCC;
-  border-bottom: 5px solid #CCC;
+  position: relative;
+  z-index: 1;
+  border-top: 5px solid #1e293b;
+  border-bottom: 5px solid #1e293b;
   border-radius: 30px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
   padding: 33px 33px 15px;
-  background: rgba(0, 0, 0, 0.2); 
-  backdrop-filter: blur(5px); 
+  background: rgba(15, 23, 42, 0.6); 
+  backdrop-filter: blur(12px); 
 }
 
 .botoes button {
@@ -41,7 +71,7 @@ body {
   font-size: 18px;
   cursor: pointer;
   z-index: 1;
-  overflow: hidden; /* Esconde o excesso do gradiente */
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -52,7 +82,7 @@ body {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(45deg, #ff007f, #7928ca, #00dfd8, #ff007f);
+  background: linear-gradient(45deg, #38bdf8, #818cf8, #c084fc, #38bdf8);
   background-size: 400%;
   border-radius: 30px;
   z-index: -1;
@@ -69,8 +99,8 @@ body {
 
 .botoes button:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(121, 40, 202, 0.4);
-  color: #00dfd8; 
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3);
+  color: #38bdf8; 
 }
 
 .botoes button:hover::before {
